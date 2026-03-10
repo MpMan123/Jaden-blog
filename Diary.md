@@ -26,3 +26,18 @@ Logic: Để bảo mật, Next.js yêu cầu bạn khai báo các host ảnh bê
 Ý nghĩa: Hiển thị các ký hiệu trạng thái khi bạn đang lập trình (như biểu tượng đang build ở góc màn hình).
 Logic: Giúp bạn biết hệ thống có đang cập nhật hay không khi bạn sửa code.
 ```
+
+
+```python
+Về việc "import" file ZIP: Trình biên dịch của Next.js (Turbopack) mặc định không hiểu cách xử lý tệp .zip như một module (khác với ảnh hay CSS). Nếu cố tình import, hệ thống sẽ báo lỗi "Unknown module type".
+
+Vì vậy, tôi đã thực hiện cách làm chuẩn và ổn định nhất cho GitHub Pages:
+
+Sử dụng thư mục public: File của bạn đã nằm ở public/vuln/ApoorvCtf_Havok.zip. Đây là nơi chứa các tài nguyên tĩnh không cần biên dịch.
+Đường dẫn trực tiếp: Tôi đã cập nhật file 
+ApoorvCtf.jsx
+ để sử dụng đường dẫn đầy đủ: /jaden-blog/vuln/ApoorvCtf_Havok.zip.
+Tại sao phải thêm /jaden-blog/? Vì bạn đang cấu hình basePath để deploy lên GitHub Pages, nên mọi đường dẫn file tĩnh trong code phải bắt đầu bằng tên repository của bạn thì mới tải về được.
+
+Bây giờ nút "Download Havok" sẽ hoạt động hoàn hảo cả ở local và khi deploy!
+```

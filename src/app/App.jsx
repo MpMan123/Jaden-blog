@@ -7,6 +7,7 @@ import CTF from '@/pages/CTF'
 import WriteUp from '@/pages/WriteUp'
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import ScrollToHash from '@/components/ScrollToHash'
+import ApoorvCtf from '@/pages/ApoorvCtf'
 
 const App = () => {
     return (
@@ -17,8 +18,9 @@ const App = () => {
                     <Route path="/" element={<Navigate to="/home" replace />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/archive" element={<Archive />} />
-                    <Route path="/CTF" element={<CTF />} />
+                    <Route path="/ctf" element={<CTF />} />
                     <Route path="/writeup" element={<WriteUp />} />
+                    <Route path="/ctf/ApoorvCtf" element={<ApoorvCtf />} />
                 </Route>
             </Routes>
         </Router>

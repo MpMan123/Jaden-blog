@@ -6,7 +6,6 @@ import {
     GithubOutlined,
     LinkedinOutlined,
     MailOutlined,
-    PhoneOutlined,
 } from '@ant-design/icons';
 import Link from "next/link";
 import logo from "../../public/Logo.jpeg";
@@ -39,6 +38,8 @@ const Sidebar = () => {
         },
         '/archive': {
             items: [
+                { key: '#com_architecture', label: 'Computer Architecture' },
+                { key: '#os', label: 'Operating System' },
                 { key: '#got_plt', label: 'GOT-PLT' },
                 { key: '#fmt', label: 'Format String' },
                 { key: '#rop', label: 'ROP-Return Oriented Programming' },
@@ -46,8 +47,7 @@ const Sidebar = () => {
         },
         '/ctf': {
             items: [
-                { key: '/ctf', label: 'CTF' },
-                { key: '/ctf/writeups', label: 'Writeups' },
+                { key: '/ctf/ApoorvCtf', label: 'ApoorvCTF' },
             ]
         },
         '/writeup': {
@@ -66,14 +66,14 @@ const Sidebar = () => {
     )?.[1] || sidebarConfigs['/home'];
 
     return (
-        <aside className="bg-black text-white p-2 w-full h-full flex flex-col items-center justify-between">
+        <aside className="bg-black text-white py-8 px-4 w-full h-full flex flex-col items-center justify-between">
             <div className="flex flex-col items-center w-full">
                 <div className="avatar overflow-hidden mb-8 border-2 border-[#141414]">
                     <Image
                         src={logo}
                         alt="Logo"
-                        width={120}
-                        height={120}
+                        width={150}
+                        height={150}
                         className="grayscale hover:grayscale-0 transition-all duration-300 object-cover w-full h-full"
                     />
                 </div>

@@ -1,8 +1,8 @@
 import ClientAppWrapper from '../ClientAppWrapper';
 
 export function generateStaticParams() {
-  console.log('generateStaticParams', [{ slug: [''] }]);
-  return [{ slug: [''] }];
+  console.log('generateStaticParams', [{ slug: [] }]);
+  return [{ slug: [] }];
 }
 
 export default function Home() {

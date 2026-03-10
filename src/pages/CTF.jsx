@@ -1,17 +1,22 @@
-import { Typography, Card } from 'antd';
+import Content from "@/components/Content";
 
-const { Title, Paragraph } = Typography;
+const menuItems = [
+    {
+        key: '/ctf/ApoorvCtf',
+        label: 'ApoorvCTF',
+        contents: `
+# ApoorvCTF
+
+CTF (Capture The Flag) là một loại cuộc thi bảo mật mà các đội thách thức phải giải quyết các vấn đề bảo mật để tìm ra các cờ (flags).
+        `
+    }
+]
 
 const CTF = () => {
     return (
-        <Typography className="max-w-3xl">
-            <Title level={2} style={{ color: '#ffffff', marginBottom: '32px', fontWeight: 600, letterSpacing: '-0.02em' }}>
-                Capture The Flag
-            </Title>
-            <Paragraph style={{ color: '#d1d1d1', fontSize: '16px', lineHeight: '1.8' }}>
-                Deep dives into CTF challenges to documenting security competitions.
-            </Paragraph>
-        </Typography>
+        <div className="max-w-2xl markdown-content">
+            <Content menuItems={menuItems} />
+        </div>
     );
 };
 

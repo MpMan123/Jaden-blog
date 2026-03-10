@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 
 
 const { Content, Sider } = AntLayout;
-const SIDEBAR_WIDTH = 250; // Use the user's preferred width
+const SIDEBAR_WIDTH = 280; // Use the user's preferred width
 
 const Layout = () => {
     return (
