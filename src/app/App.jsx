@@ -5,12 +5,12 @@ import Layout from '@/components/Layout'
 import Archive from '@/pages/Archive'
 import CTF from '@/pages/CTF'
 import WriteUp from '@/pages/WriteUp'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import ScrollToHash from '@/components/ScrollToHash'
 
 const App = () => {
     return (
-        <BrowserRouter>
+        <Router>
             <ScrollToHash />
             <Routes>
                 <Route element={<Layout />}>
@@ -21,7 +21,7 @@ const App = () => {
                     <Route path="/writeup" element={<WriteUp />} />
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </Router>
     );
 }
 

@@ -2,7 +2,10 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  output: 'export',
+  basePath: '/jaden-blog',
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
