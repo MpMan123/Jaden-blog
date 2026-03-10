@@ -9,6 +9,7 @@ import {
     PhoneOutlined,
 } from '@ant-design/icons';
 import Link from "next/link";
+import logo from "../../public/Logo.jpeg";
 
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -69,7 +70,7 @@ const Sidebar = () => {
             <div className="flex flex-col items-center w-full">
                 <div className="avatar overflow-hidden mb-8 border-2 border-[#141414]">
                     <Image
-                        src="/Logo.jpeg"
+                        src={logo}
                         alt="Logo"
                         width={120}
                         height={120}

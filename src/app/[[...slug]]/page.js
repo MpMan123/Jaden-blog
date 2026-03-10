@@ -1,14 +1,15 @@
-"use client";
+import ClientAppWrapper from '../ClientAppWrapper';
 
-import dynamic from 'next/dynamic';
-
-const App = dynamic(() => import('@/app/App'), { ssr: false });
+export function generateStaticParams() {
+  console.log('generateStaticParams', [{ slug: [''] }]);
+  return [{ slug: [''] }];
+}
 
 export default function Home() {
+  console.log("PAGE.js rendering on server");
   return (
     <main>
-      <App />
+      <ClientAppWrapper />
     </main>
   );
 }
-
