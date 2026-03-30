@@ -14,6 +14,22 @@ const nextConfig = {
     ],
   },
   devIndicators: false,
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.md$/,
+      type: 'asset/source',
+    });
+    return config;
+  },
+  experimental: {
+    turbopack: {
+      rules: {
+        '*.md': {
+          as: 'string',
+        },
+      },
+    },
+  },
 };
 
 export default nextConfig;

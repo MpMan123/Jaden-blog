@@ -7,7 +7,20 @@ import CTF from '@/pages/CTF'
 import WriteUp from '@/pages/WriteUp'
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import ScrollToHash from '@/components/ScrollToHash'
-import ApoorvCtf from '@/pages/ApoorvCtf'
+
+// Automatically import all .jsx files from @/pages/CTF
+// and create route components
+const ctfContext = require.context('@/pages/CTF', false, /\.jsx$/);
+const ctfRoutes = ctfContext.keys().map(key => {
+    const Component = ctfContext(key).default;
+    const name = key.match(/\.\/(.+)\.jsx$/)[1];
+    return {
+        path: `/ctf/${name}`,
+        element: <Component />,
+        key: name
+    };
+});
+
 
 const App = () => {
     return (
@@ -20,7 +33,9 @@ const App = () => {
                     <Route path="/archive" element={<Archive />} />
                     <Route path="/ctf" element={<CTF />} />
                     <Route path="/writeup" element={<WriteUp />} />
-                    <Route path="/ctf/ApoorvCtf" element={<ApoorvCtf />} />
+                    {ctfRoutes.map(route => (
+                        <Route key={route.key} path={route.path} element={route.element} />
+                    ))}
                 </Route>
             </Routes>
         </Router>

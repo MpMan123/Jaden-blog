@@ -1,16 +1,20 @@
 import Content from "@/components/Content";
 
-const menuItems = [
-    {
-        key: '/ctf/ApoorvCtf',
-        label: 'ApoorvCTF',
-        contents: `
-# ApoorvCTF
+const ctfContext = require.context('@/content/ctf', false, /\.md$/);
 
-CTF (Capture The Flag) là một loại cuộc thi bảo mật mà các đội thách thức phải giải quyết các vấn đề bảo mật để tìm ra các cờ (flags).
-        `
-    }
-]
+const menuItems = ctfContext.keys().map(key => {
+    const contents = ctfContext(key).default;
+    const id = key.match(/\.\/(.+)\.md$/)[1];
+
+    const titleMatch = contents.match(/^#\s+(.+)$/m);
+    const label = titleMatch ? titleMatch[1] : id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+    return {
+        key: id, // Or use the path if needed
+        label: label,
+        contents: contents
+    };
+});
 
 const CTF = () => {
     return (
@@ -21,4 +25,3 @@ const CTF = () => {
 };
 
 export default CTF;
-
