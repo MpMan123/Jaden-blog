@@ -3,7 +3,8 @@ import Content from "@/components/Content";
 const contentContext = require.context('@/content/apoorv-ctf', false, /\.md$/);
 
 const menuItems = contentContext.keys().map(key => {
-  const contents = contentContext(key).default;
+  const module = contentContext(key);
+  const contents = module.default || module;
   const id = key.match(/\.\/(.+)\.md$/)[1];
 
   const titleMatch = contents.match(/^#\s+(.+)$/m);

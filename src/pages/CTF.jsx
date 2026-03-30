@@ -3,7 +3,8 @@ import Content from "@/components/Content";
 const ctfContext = require.context('@/content/ctf', false, /\.md$/);
 
 const menuItems = ctfContext.keys().map(key => {
-    const contents = ctfContext(key).default;
+    const module = ctfContext(key);
+    const contents = module.default || module;
     const id = key.match(/\.\/(.+)\.md$/)[1];
 
     const titleMatch = contents.match(/^#\s+(.+)$/m);
