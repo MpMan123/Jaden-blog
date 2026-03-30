@@ -4,7 +4,7 @@ const archiveContext = require.context('@/content/archive', false, /\.md$/);
 
 const menuItems = archiveContext.keys().map(key => {
   const module = archiveContext(key);
-  const contents = module.default || module;
+  const contents = (module.default || module || "").toString();
   const id = key.match(/\.\/(.+)\.md$/)[1];
 
   // Extract title from first H1 if it exists

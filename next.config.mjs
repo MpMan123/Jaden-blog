@@ -3,6 +3,7 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   output: 'export',
+  trailingSlash: true,
   basePath: '/jaden-blog',
   images: {
     unoptimized: true,
