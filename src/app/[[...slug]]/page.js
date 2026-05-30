@@ -5,7 +5,7 @@ export function generateStaticParams() {
     { slug: [] },
     { slug: ['home'] },
     { slug: ['archive'] },
-    { slug: ['ctf'] },
+    { slug: ['project'] },
     { slug: ['writeup'] },
     { slug: ['writeup', 'web'] },
     { slug: ['writeup', 'pwn'] },

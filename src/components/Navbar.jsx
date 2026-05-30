@@ -14,7 +14,7 @@ const Navbar = () => {
             let title = snippet;
             if (title === 'home') title = 'Home';
             if (title === 'archive') title = 'Archive';
-            if (title === 'ctf') title = 'CTF';
+            if (title === 'project') title = 'Project';
             if (title === 'writeup') title = 'Write Up';
 
             return {

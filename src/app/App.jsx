@@ -32,7 +32,7 @@ const App = () => {
                     <Route path="/" element={<Navigate to="/home" replace />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/archive" element={<Archive />} />
-                    <Route path="/ctf" element={<Project />} />
+                    <Route path="/project" element={<Project />} />
                     <Route path="/writeup" element={<WriteUp />} />
                     <Route path="/about" element={<About />} />
                     {ctfRoutes.map(route => (

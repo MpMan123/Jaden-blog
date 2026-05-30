@@ -14,8 +14,8 @@ const SafeLink = ({ to, children, ...props }) => {
         return () => clearTimeout(timer);
     }, []);
 
-    if (!isClient) {
-        // Fallback to static anchor tag during Next.js server compilation
+    if (!isClient || props.target) {
+        // Fallback to static anchor tag during Next.js server compilation or for native targets
         return <a href={`/jaden-blog${to}`} {...props}>{children}</a>;
     }
     

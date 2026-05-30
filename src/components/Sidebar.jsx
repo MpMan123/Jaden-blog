@@ -21,7 +21,7 @@ const Sidebar = () => {
     // Dynamic sidebar tabs array for auto rendering
     const sidebarTab = [
         { label: 'Journal', path: '/home', icon: 'terminal' },
-        { label: 'Projects', path: '/ctf', icon: 'code' },
+        { label: 'Projects', path: '/project', icon: 'code' },
         { label: 'Archive', path: '/archive', icon: 'menu_book' },
         { label: 'Write Up', path: '/writeup', icon: 'rate_review' },
         { label: 'About', path: '/about', icon: 'person_pin' },
@@ -66,10 +66,8 @@ const Sidebar = () => {
                 { key: '#rop', label: 'ROP-Return Oriented Programming' },
             ]
         },
-        '/ctf': {
-            items: [
-                { key: '/ctf/ApoorvCtf', label: 'ApoorvCTF' },
-            ]
+        '/project': {
+            
         },
         '/writeup': {
             items: [
