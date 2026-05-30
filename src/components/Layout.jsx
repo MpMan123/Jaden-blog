@@ -1,45 +1,47 @@
 "use client";
 
 import { Outlet } from "react-router-dom";
-import { Layout as AntLayout } from "antd";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
-
-const { Content, Sider } = AntLayout;
-const SIDEBAR_WIDTH = 280; // Use the user's preferred width
-
 const Layout = () => {
     return (
-        <AntLayout style={{ minHeight: "100vh", background: "#000000", borderLeft: '1px solid #000000' }}>
-            <Sider
-                width={SIDEBAR_WIDTH}
-                theme="dark"
-                style={{
-                    overflow: 'auto',
-                    height: '100vh',
-                    position: 'fixed',
-                    left: 0,
-                    top: 0,
-                    bottom: 0,
-                    zIndex: 50,
-                    borderRight: '1px solid #4a4646ff'
-                }}
-            >
-                <Sidebar />
-            </Sider>
+        <div className="min-h-screen flex bg-background text-on-surface">
+            {/* Sidebar Navigation */}
+            <Sidebar />
 
-            <AntLayout style={{ marginLeft: SIDEBAR_WIDTH, transition: 'all 0.2s', background: '#000000' }}>
+            {/* Main Content Area */}
+            <main className="ml-64 flex-1 min-h-screen flex flex-col pl-0">
+                {/* Sticky Top Bar */}
                 <Navbar />
-                <Content style={{ margin: '24px 24px', overflow: 'initial' }}>
-                    <div style={{ padding: '40px', background: '#000000', color: '#fff', minHeight: 'calc(100vh - 128px)', borderLeft: '1px solid #141414' }}>
-                        <Outlet />
+
+                {/* Main Content Canvas */}
+                <div className="flex-1 max-w-[1100px] mx-auto w-full px-8 py-12">
+                    <Outlet />
+                </div>
+
+                {/* Footer */}
+                <footer className="mt-auto border-t border-outline-variant bg-surface">
+                    <div className="flex flex-col md:flex-row justify-between items-center py-6 px-8 max-w-[1100px] mx-auto w-full">
+                        <div className="mb-4 md:mb-0">
+                            <p className="font-label-code text-xs text-on-surface-variant uppercase tracking-wider">
+                                © 2026 JADEN_CMD. ALL_RIGHTS_RESERVED.
+                            </p>
+                        </div>
+                        <div className="flex gap-8">
+                            <a className="font-label-code text-xs text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all duration-200" href="#">Privacy</a>
+                            <a className="font-label-code text-xs text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all duration-200" href="#">License</a>
+                            <a className="font-label-code text-xs text-on-surface-variant hover:text-primary hover:underline decoration-primary transition-all duration-200" href="#">Changelog</a>
+                        </div>
+                        <div className="hidden md:flex items-center gap-2">
+                            <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                            <span className="font-label-code text-xs text-on-surface-variant uppercase tracking-wider">SYSTEM_STABLE</span>
+                        </div>
                     </div>
-                </Content>
-            </AntLayout>
-        </AntLayout>
+                </footer>
+            </main>
+        </div>
     );
 };
-
 
 export default Layout;

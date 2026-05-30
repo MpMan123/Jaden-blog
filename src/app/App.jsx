@@ -3,9 +3,10 @@
 import Home from '@/pages/Home';
 import Layout from '@/components/Layout'
 import Archive from '@/pages/Archive'
-import CTF from '@/pages/CTF'
+import Project from '@/pages/Project'
 import WriteUp from '@/pages/WriteUp'
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import About from '@/pages/About'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import ScrollToHash from '@/components/ScrollToHash'
 
 // Automatically import all .jsx files from @/pages/CTF
@@ -24,15 +25,16 @@ const ctfRoutes = ctfContext.keys().map(key => {
 
 const App = () => {
     return (
-        <Router>
+        <Router basename="/jaden-blog">
             <ScrollToHash />
             <Routes>
                 <Route element={<Layout />}>
                     <Route path="/" element={<Navigate to="/home" replace />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/archive" element={<Archive />} />
-                    <Route path="/ctf" element={<CTF />} />
+                    <Route path="/ctf" element={<Project />} />
                     <Route path="/writeup" element={<WriteUp />} />
+                    <Route path="/about" element={<About />} />
                     {ctfRoutes.map(route => (
                         <Route key={route.key} path={route.path} element={route.element} />
                     ))}

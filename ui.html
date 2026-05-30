@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>jaden.log | IT Systems &amp; Architecture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#4edea3",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-high": "#2a2a2a",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#313030",
+                        "on-surface": "#e5e2e1",
+                        "secondary-fixed": "#d8e2ff",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb3af",
+                        "surface-container": "#201f1f",
+                        "surface-bright": "#3a3939",
+                        "surface": "#131313",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed": "#002113",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-dim": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "background": "#131313",
+                        "on-secondary": "#002e6a",
+                        "on-primary-container": "#00422b",
+                        "tertiary-container": "#fc7c78",
+                        "outline": "#86948a",
+                        "on-tertiary-fixed": "#410005",
+                        "primary": "#4edea3",
+                        "on-surface-variant": "#bbcabf",
+                        "surface-tint": "#4edea3",
+                        "on-background": "#e5e2e1",
+                        "outline-variant": "#3c4a42",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e0e",
+                        "primary-container": "#10b981",
+                        "surface-container-highest": "#353534",
+                        "tertiary": "#ffb3af",
+                        "on-tertiary-fixed-variant": "#842225",
+                        "on-primary": "#003824",
+                        "surface-variant": "#353534",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary-fixed-variant": "#005236",
+                        "secondary": "#adc6ff",
+                        "on-secondary-container": "#e6ecff",
+                        "secondary-container": "#0566d9",
+                        "on-tertiary-container": "#711419",
+                        "on-secondary-fixed-variant": "#004395",
+                        "inverse-primary": "#006c49",
+                        "primary-fixed": "#6ffbbe",
+                        "on-tertiary": "#650911"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1100px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-code": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-code": ["14px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .code-block-accent {
+            border-left: 2px solid #4edea3;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1c1b1b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3c4a42;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #4edea3;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant flex flex-col py-8 px-4 z-50">
+<!-- Brand / Profile -->
+<div class="mb-12 px-4">
+<div class="w-12 h-12 mb-4 overflow-hidden rounded bg-surface-container-high border border-outline-variant">
+<img alt="Jaden's terminal-style profile avatar" class="w-full h-full object-cover grayscale opacity-80" data-alt="A stylized, high-contrast black and white portrait of a person in a tech environment, obscured by glitch art effects and green terminal code overlays. The aesthetic is cybernetic and minimalist, using sharp lines and a deep shadow palette that aligns with a high-end security professional's digital identity. Lighting is low-key with a single green glow from a screen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVnCRYTLmhGSWfuMlXlZynl-VDkH1p6TP32nJ02Usnwegsxk_0iSSOJTwe7Sov8FB0WPFLYrEwjGvhqs8SCBPt3c9bKFWiHygFZiMI6MLrO_3KQQQRXU9PliUfjUJu8WLPZZ29HpGb46z1O9NPxuIFEQn9CNI4GWuz5QYrFXgr-G6OLyvT6gtm1ltwzPLXtck_Gjl2vHYlsqHr9rMPUImjch5yqHLhUFtk8xOeCCgl64Fk-_JdADunR097z3yI2hSjKGx2ryXofnCK"/>
+</div>
+<h1 class="font-label-code text-label-code font-bold text-primary mb-1">jaden@root:~</h1>
+<p class="font-label-code text-[11px] text-on-surface-variant uppercase tracking-wider">IT Systems &amp; Architecture</p>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 py-2 text-primary font-bold border-l-2 border-primary pl-4 transition-all active:opacity-80 active:scale-[0.99] font-label-code text-label-code" href="#">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+                Journal
+            </a>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high pl-4 transition-all active:opacity-80 active:scale-[0.99] font-label-code text-label-code" href="#">
+<span class="material-symbols-outlined text-[20px]">code</span>
+                Projects
+            </a>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high pl-4 transition-all active:opacity-80 active:scale-[0.99] font-label-code text-label-code" href="#">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+                Manuals
+            </a>
+<a class="flex items-center gap-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high pl-4 transition-all active:opacity-80 active:scale-[0.99] font-label-code text-label-code" href="#">
+<span class="material-symbols-outlined text-[20px]">person_pin</span>
+                About
+            </a>
+</nav>
+<!-- CTA & Footer Tabs -->
+<div class="mt-auto space-y-6">
+<button class="w-full py-2 bg-primary-container text-on-primary-container font-label-code text-label-code font-bold rounded-sm hover:opacity-90 transition-opacity">
+                Subscribe
+            </button>
+<div class="flex justify-around pt-6 border-t border-outline-variant">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#" title="GitHub">
+<span class="material-symbols-outlined">code_blocks</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#" title="LinkedIn">
+<span class="material-symbols-outlined">account_circle</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#" title="RSS">
+<span class="material-symbols-outlined">rss_feed</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant flex justify-between items-center w-full px-gutter h-16 max-w-[calc(1100px+24px)] mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-label-code text-body-lg font-bold text-primary tracking-tighter">jaden.log</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-1 active:translate-y-0.5 transition-all" href="#">Latest</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface active:translate-y-0.5 transition-all" href="#">Archive</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface active:translate-y-0.5 transition-all" href="#">Tags</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<input class="bg-surface-container-low border border-outline-variant rounded-sm py-1 px-3 text-label-code font-label-code focus:border-primary focus:ring-0 w-48 text-on-surface-variant" placeholder="grep search..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings_ethernet</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+</div>
+</header>
+<!-- Page Content Canvas -->
+<div class="flex-1 max-w-[1100px] mx-auto w-full px-gutter py-12">
+<!-- about_me.md section -->
+<section class="mb-section-gap">
+<div class="bg-surface-container-low border border-outline-variant p-8 relative overflow-hidden group">
+<!-- Terminal Decoration -->
+<div class="absolute top-0 left-0 w-full h-1 bg-primary/20 group-hover:bg-primary/40 transition-colors"></div>
+<header class="flex items-center gap-2 mb-6">
+<span class="text-primary font-label-code text-label-code font-bold">&gt;</span>
+<h2 class="font-label-code text-body-lg font-bold text-on-surface">about_me.md</h2>
+</header>
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                                Welcome to my blog! This is where I share my latest updates, technical thoughts, and CTF write-ups. Focused on kernel exploration, network forensics, and minimalist infrastructure.
+                            </p>
+</div>
+<div class="w-full md:w-64 aspect-video md:aspect-square bg-surface-container-high border border-outline-variant rounded-sm overflow-hidden">
+<img alt="Matrix style code visualization" class="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 transition-all duration-500" data-alt="Macro photography of a high-resolution monitor displaying lines of C++ kernel code. The lighting is dominated by a cool emerald green glow against a pitch-black background, creating a moody, technical atmosphere. The focus is shallow, with some code lines blurring into artistic bokeh, emphasizing a minimalist and disciplined developer aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC6hRtMYtvA3yEaM4xp28O-gFlVqzIaTbJ1pOpXI6of9s7rvwb13SzGZgwTrosdcMHb3ESFKtC69-uR9Ef77NCQtMcWEAHJKwa0XpzARb36K84vLrklS7eHQMSUdz673K5SGWM3Tg8AQkmqgY3-LR_hwOCaiDdH7uBs3vH2W_j7et8ZwxNuNXOe_N57Qa9PMVqNt2KqlKfn8gRGVCiqRk8X4PNlhYkF4KA9clFkfMPnUSTxC3acuJ5dT2HpoWLudSeaMP4NMRKfTFy"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest Thoughts Section -->
+<section class="mb-section-gap">
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface">Latest Thoughts</h2>
+<span class="font-label-code text-label-caps text-on-surface-variant">3 ENTRIES_FOUND</span>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<!-- Post 1 -->
+<article class="bg-surface border border-outline-variant p-6 hover:border-primary/50 transition-all group flex flex-col md:flex-row gap-6">
+<div class="flex flex-col justify-between md:w-48 shrink-0">
+<time class="font-label-code text-label-caps text-primary mb-2">2024.05.12</time>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-code text-[12px] text-secondary border border-secondary/30 px-2 py-0.5 rounded-sm">#security</span>
+<span class="font-label-code text-[12px] text-secondary border border-secondary/30 px-2 py-0.5 rounded-sm">#linux</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[24px] text-on-surface group-hover:text-primary transition-colors mb-3">Exploring Kernel Security</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                                Deep dive into contemporary kernel hardening techniques and the evolution of mitigation strategies within the Linux ecosystem...
+                            </p>
+<a class="inline-flex items-center gap-2 font-label-code text-label-code text-primary group/link" href="#">
+                                read_more <span class="group-hover/link:translate-x-1 transition-transform">-&gt;</span>
+</a>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="bg-surface border border-outline-variant p-6 hover:border-primary/50 transition-all group flex flex-col md:flex-row gap-6">
+<div class="flex flex-col justify-between md:w-48 shrink-0">
+<time class="font-label-code text-label-caps text-primary mb-2">2024.04.28</time>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-code text-[12px] text-secondary border border-secondary/30 px-2 py-0.5 rounded-sm">#homelab</span>
+<span class="font-label-code text-[12px] text-secondary border border-secondary/30 px-2 py-0.5 rounded-sm">#ops</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[24px] text-on-surface group-hover:text-primary transition-colors mb-3">My Home Lab Setup</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                                Building a high-availability Proxmox cluster using recycled enterprise gear, focusing on ZFS replication and automated failover...
+                            </p>
+<a class="inline-flex items-center gap-2 font-label-code text-label-code text-primary group/link" href="#">
+                                read_more <span class="group-hover/link:translate-x-1 transition-transform">-&gt;</span>
+</a>
+</div>
+</article>
+<!-- Post 3 -->
+<article class="bg-surface border border-outline-variant p-6 hover:border-primary/50 transition-all group flex flex-col md:flex-row gap-6">
+<div class="flex flex-col justify-between md:w-48 shrink-0">
+<time class="font-label-code text-label-caps text-primary mb-2">2024.03.15</time>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-code text-[12px] text-secondary border border-secondary/30 px-2 py-0.5 rounded-sm">#ctf</span>
+<span class="font-label-code text-[12px] text-secondary border border-secondary/30 px-2 py-0.5 rounded-sm">#forensics</span>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-[24px] text-on-surface group-hover:text-primary transition-colors mb-3">HTB: "The Terminal" Write-up</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+                                Analyzing memory dumps to recover transient encrypted strings in a simulated secure communication environment...
+                            </p>
+<a class="inline-flex items-center gap-2 font-label-code text-label-code text-primary group/link" href="#">
+                                read_more <span class="group-hover/link:translate-x-1 transition-transform">-&gt;</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+<!-- Newsletter Component (Custom Addition) -->
+<section class="mb-section-gap">
+<div class="border border-outline-variant bg-surface-container p-10 flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-[48px] mb-4">terminal</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Stay in the Loop</h2>
+<p class="font-body-md text-on-surface-variant mb-8 max-w-md">Receive occasional updates on system architectures, security findings, and project releases.</p>
+<form class="flex w-full max-w-md gap-4">
+<input class="flex-1 bg-surface-container-low border border-outline-variant px-4 py-2 font-label-code text-label-code text-on-surface focus:border-primary focus:ring-0 focus:outline-none" placeholder="user@domain.com" type="email"/>
+<button class="bg-primary text-on-primary px-6 py-2 font-label-code text-label-code font-bold hover:bg-primary-fixed-dim transition-colors" type="submit">JOIN</button>
+</form>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="mt-auto border-t border-outline-variant bg-surface dark:bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center py-gutter px-gutter max-w-[1100px] mx-auto w-full">
+<div class="mb-4 md:mb-0">
+<p class="font-label-code text-label-caps text-on-surface-variant">© 2024 JADEN_CMD. ALL_RIGHTS_RESERVED.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-code text-label-caps text-on-surface-variant hover:underline decoration-primary" href="#">Privacy</a>
+<a class="font-label-code text-label-caps text-on-surface-variant hover:underline decoration-primary" href="#">License</a>
+<a class="font-label-code text-label-caps text-on-surface-variant hover:underline decoration-primary" href="#">Changelog</a>
+</div>
+<div class="hidden md:flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-code text-label-caps text-on-surface-variant uppercase">SYSTEM_STABLE</span>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interactions for terminal feel
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'translateY(1px)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = 'translateY(0px)';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translateY(0px)';
+            });
+        });
+
+        // Simple terminal cursor effect for the header
+        const headerTitle = document.querySelector('h1');
+        if (headerTitle) {
+            let visible = true;
+            setInterval(() => {
+                const text = "jaden@root:~";
+                headerTitle.textContent = visible ? text + "_" : text + " ";
+                visible = !visible;
+            }, 600);
+        }
+    </script>
+</body></html>

@@ -1,28 +1,17 @@
-import { useLocation, Link, useNavigate } from "react-router-dom";
-import {
-    BellOutlined,
-    SettingOutlined,
-    UserOutlined,
-    CalendarOutlined,
-    HomeOutlined
-} from "@ant-design/icons";
-import { Layout, Breadcrumb, theme, Menu } from "antd";
-const { Header } = Layout;
+"use client";
+
+import { useLocation, Link } from "react-router-dom";
+import { Breadcrumb } from "antd";
 
 const Navbar = () => {
-    const navigate = useNavigate();
     const location = useLocation();
-    const {
-        token: { colorBgContainer },
-    } = theme.useToken();
 
     // Generate Breadcrumb items based on path
     const getBreadcrumbItems = () => {
         const pathSnippets = location.pathname.split('/').filter(i => i);
-        const extraBreadcrumbItems = pathSnippets.map((_, index) => {
+        const extraBreadcrumbItems = pathSnippets.map((snippet, index) => {
             const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
-            // Simple mapping for demo purposes
-            let title = pathSnippets[index];
+            let title = snippet;
             if (title === 'home') title = 'Home';
             if (title === 'archive') title = 'Archive';
             if (title === 'ctf') title = 'CTF';
@@ -37,74 +26,37 @@ const Navbar = () => {
         return [
             {
                 key: '/',
-                title: <Link to="/">Home</Link>,
+                title: <Link to="/">Root</Link>,
             },
         ].concat(extraBreadcrumbItems);
     };
 
-    // User Dropdown Menu
-    const menuProps = {
-        items: [
-            {
-                key: '/home',
-                label: <Link to="/home">Home</Link>,
-            },
-            {
-                key: 'archive',
-                label: <Link to="/archive">Archive</Link>,
-            },
-            {
-                key: 'ctf',
-                label: <Link to="/ctf">CTF</Link>,
-            },
-            {
-                key: 'writeup',
-                label: <Link to="/writeup">Write Up</Link>,
-            },
-        ],
-    };
-
     return (
-        <Header
-            style={{
-                padding: '0 40px',
-                background: '#000000',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                position: 'sticky',
-                top: 0,
-                zIndex: 40,
-                borderBottom: '1px solid #141414',
-                height: '80px'
-            }}
-        >
-            {/* Breadcrumb - Keeping it but styled minimally by CSS */}
-            <div className="custom-breadcrumb">
-                <Breadcrumb items={getBreadcrumbItems()} />
+        <header className="sticky top-0 z-40 bg-surface/85 backdrop-blur-md border-b border-outline-variant flex justify-between items-center w-full px-8 h-16 max-w-[calc(1100px+24px)] mx-auto">
+            {/* Left Section: Logo & Breadcrumbs */}
+            <div className="flex items-center gap-6">
+                <span className="font-label-code text-sm font-bold text-primary tracking-tighter">
+                    jaden.blog
+                </span>
+                
+                {/* Dynamic Breadcrumbs */}
+                <div className="custom-breadcrumb hidden md:block">
+                    <Breadcrumb items={getBreadcrumbItems()} />
+                </div>
             </div>
 
-            {/* Right Side Actions */}
-
-            <Menu
-                mode="horizontal"
-                selectedKeys={[location.pathname]}
-                items={menuProps.items}
-                onClick={({ key }) => navigate(key)}
-                theme="dark"
-                className="custom-navbar-menu"
-                style={{
-                    flex: 1,
-                    minWidth: 0,
-                    background: 'transparent',
-                    borderBottom: 0,
-                    justifyContent: 'flex-end',
-                }}
-            />
-
-        </Header>
+            {/* Right Section: Grep Search & Actions */}
+            <div className="flex items-center gap-4">
+                <div className="relative hidden sm:block">
+                    <input 
+                        type="text"
+                        placeholder="&gt; grep search..." 
+                        className="bg-surface-container-low border border-outline-variant rounded-sm py-1 px-3 text-xs font-label-code text-on-surface-variant focus:border-primary focus:outline-none focus:ring-0 w-44 placeholder:text-outline transition-all duration-300"
+                    />
+                </div>
+            </div>
+        </header>
     );
-
 };
 
 export default Navbar;

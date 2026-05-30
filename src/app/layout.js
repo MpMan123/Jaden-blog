@@ -1,4 +1,4 @@
-import { Inter, Lora } from "next/font/google";
+import { Inter, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -6,25 +6,28 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const lora = Lora({
-  variable: "--font-lora",
+const hankenGrotesk = Hanken_Grotesk({
+  variable: "--font-hanken-grotesk",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
 export const metadata = {
   title: "Jaden's Blog",
-  description: "",
+  description: "IT Systems & Architecture journal, manuals, and writeups.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${lora.variable} font-sans antialiased`}
+        className={`${inter.variable} ${hankenGrotesk.variable} ${jetbrainsMono.variable} font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container`}
       >
-        <div className="min-h-screen flex flex-col">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );
