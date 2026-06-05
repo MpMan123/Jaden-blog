@@ -24,8 +24,9 @@ const ctfRoutes = ctfContext.keys().map(key => {
 
 
 const App = () => {
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "/jaden-blog";
     return (
-        <Router basename="/jaden-blog">
+        <Router basename={basePath}>
             <ScrollToHash />
             <Routes>
                 <Route element={<Layout />}>

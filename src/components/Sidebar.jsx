@@ -64,6 +64,7 @@ const Sidebar = () => {
                 { key: '#got_plt', label: 'GOT-PLT' },
                 { key: '#fmt', label: 'Format String' },
                 { key: '#rop', label: 'ROP-Return Oriented Programming' },
+                { key: '#ret2libc', label: 'Return to Libc'},
             ]
         },
         '/project': {

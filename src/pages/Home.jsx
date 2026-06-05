@@ -16,7 +16,8 @@ const SafeLink = ({ to, children, ...props }) => {
 
     if (!isClient || props.target) {
         // Fallback to static anchor tag during Next.js server compilation or for native targets
-        return <a href={`/jaden-blog${to}`} {...props}>{children}</a>;
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "/jaden-blog";
+        return <a href={`${basePath}${to}`} {...props}>{children}</a>;
     }
     
     return <Link to={to} {...props}>{children}</Link>;

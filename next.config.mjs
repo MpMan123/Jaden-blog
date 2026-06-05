@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+const isVercel = process.env.VERCEL === '1';
+const basePath = isVercel ? '' : '/jaden-blog';
+
 const nextConfig = {
   /* config options here */
   turbopack: {
@@ -12,13 +15,16 @@ const nextConfig = {
   reactCompiler: true,
   output: 'export',
   trailingSlash: true,
-  basePath: '/jaden-blog',
-  ...(process.env.NODE_ENV === 'development' ? {
+  basePath: basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
+  ...(process.env.NODE_ENV === 'development' && basePath ? {
     async redirects() {
       return [
         {
           source: '/',
-          destination: '/jaden-blog/',
+          destination: `${basePath}/`,
           basePath: false,
           permanent: false,
         },

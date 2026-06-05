@@ -22,7 +22,8 @@ const SafeLink = ({ to, children, ...props }) => {
         if (to.includes("https")) {
             return <a href={to} {...props}>{children}</a>
         }
-        return <a href={`/jaden-blog${to}`} {...props}>{children}</a>;
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "/jaden-blog";
+        return <a href={`${basePath}${to}`} {...props}>{children}</a>;
     }
     
     return <Link to={to} {...props}>{children}</Link>;
