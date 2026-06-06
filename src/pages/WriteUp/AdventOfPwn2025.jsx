@@ -20,7 +20,7 @@ const menuItems = contentContext.keys().map(key => {
 
 const AdventOfPwn2025 = () => {
   return (
-    <div className="max-w-2xl flex flex-col gap-4 markdown-content">
+    <div className="max-w-4xl flex flex-col gap-4 markdown-content">
       <Content menuItems={menuItems} />
     </div>
   );
