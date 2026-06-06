@@ -1,10 +1,10 @@
 import Content from "@/components/Content";
 
-const contentContext = require.context('@/content/apoorv-ctf', false, /\.md$/);
+const contentContext = require.context('@/content/AdventOfPwn2025', false, /\.md$/);
 
 const menuItems = contentContext.keys().map(key => {
-  const module = contentContext(key);
-  const contents = (module.default || module || "").toString();
+  const item = contentContext(key);
+  const contents = (item.default || item || "").toString();
   const id = key.match(/\.\/(.+)\.md$/)[1];
 
   const titleMatch = contents.match(/^#\s+(.+)$/m);
@@ -18,7 +18,7 @@ const menuItems = contentContext.keys().map(key => {
   };
 });
 
-const ApoorvCtf = () => {
+const AdventOfPwn2025 = () => {
   return (
     <div className="max-w-2xl flex flex-col gap-4 markdown-content">
       <Content menuItems={menuItems} />
@@ -26,4 +26,4 @@ const ApoorvCtf = () => {
   );
 };
 
-export default ApoorvCtf;
+export default AdventOfPwn2025;

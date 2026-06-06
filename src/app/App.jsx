@@ -11,16 +11,17 @@ import ScrollToHash from '@/components/ScrollToHash'
 
 // Automatically import all .jsx files from @/pages/CTF
 // and create route components
-const ctfContext = require.context('@/pages/CTF', false, /\.jsx$/);
+const ctfContext = require.context('@/pages/WriteUp', false, /\.jsx$/);
 const ctfRoutes = ctfContext.keys().map(key => {
     const Component = ctfContext(key).default;
     const name = key.match(/\.\/(.+)\.jsx$/)[1];
     return {
-        path: `/ctf/${name}`,
+        path: `/WriteUp/${name}`,
         element: <Component />,
         key: name
     };
 });
+
 
 
 const App = () => {

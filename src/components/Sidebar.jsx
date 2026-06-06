@@ -9,7 +9,7 @@ import {
     MailOutlined
 } from "@ant-design/icons";
 import Image from "next/image";
-import logo from "../../public/Logo.jpeg";
+import logo from "../../public/Logo.jpg";
 
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -72,8 +72,8 @@ const Sidebar = () => {
         },
         '/writeup': {
             items: [
-                { key: '/writeup/web', label: 'Web Security' },
-                { key: '/writeup/pwn', label: 'Pwnable' },
+                { key: '/writeup/AdventOfPwn2025', label: 'Advent Of Pwn 2025' },
+                { key: '/writeup/ApoorvCtf2026', label: 'Apoorv Ctf 2026' },
             ]
         },
     };

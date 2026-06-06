@@ -7,15 +7,15 @@ export function generateStaticParams() {
     { slug: ['archive'] },
     { slug: ['project'] },
     { slug: ['writeup'] },
-    { slug: ['writeup', 'web'] },
-    { slug: ['writeup', 'pwn'] },
+    { slug: ['writeup', 'AdventOfPwn2025'] },
+    { slug: ['writeup', 'ApoorvCtf2026']},
     { slug: ['about'] },
   ];
 
   try {
     const fs = require('fs');
     const path = require('path');
-    const ctfDir = path.join(process.cwd(), 'src/pages/CTF');
+    const ctfDir = path.join(process.cwd(), 'src/pages/writeup');
     if (fs.existsSync(ctfDir)) {
       const files = fs.readdirSync(ctfDir);
       files.forEach(file => {
